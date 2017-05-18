@@ -1,0 +1,123 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Mi Espacio {% endblock %}
+
+{% block body %}
+
+<meta charset="UTF-8" />
+
+<!--NOMBRE DE LA PÁGINA -->
+<div class = "nombre">
+<ul>
+   <li><span class ="fa fa-users"></span>Mi Espacio</li>
+</ul>
+</div>  
+
+{{ parent() }}
+
+{{ include('EVOUserBundle:User:messages/success.html.twig') }}
+<!-- MENU DE OPCIONES -->
+ 
+{% if is_granted('ROLE_USER') %}
+<div class="col-md-12" id = "tipoOpciones">
+<div class="col-md-6">
+{% for user in pagination %}
+
+<a href = "{{ path('evo_user_editC', { id: user.id }) }}">{% endfor %}
+<img src="{{ asset('img/editarp.jpg') }}" class="img-responsive"></a>
+<p id = "tipo"><b> Editar Perfil </b></p>
+</div>
+
+<div class="col-md-6">
+<a href = "{{ path('evo_compras_historial') }}"><img src="{{ asset('img/historial.jpg') }}" class="img-responsive"></a>
+<p id = "tipo"><b>Historial de pedidos </b></p>
+</div>
+</div>
+
+<STYLE TYPE="text/css" MEDIA=screen>
+
+  .footer-distributed{ margin-top: 600px;  }
+ 
+</STYLE>
+{% endif %}
+
+
+{% if is_granted('ROLE_EMPLEADO') %}
+<div class="col-md-12" id = "tipoOpciones">
+<div class="col-md-4">
+{% for user in pagination %}
+
+<a href = "{{ path('evo_user_editC', { id: user.id }) }}">{% endfor %}
+<img src="{{ asset('img/editarp.jpg') }}" class="img-responsive"></a>
+<p id = "tipo"><b> Editar Perfil </b></p>
+</div>
+
+<div class="col-md-4">
+<a href = "{{ path('evo_task_custom') }}"><img src="{{ asset('img/incidencia.png') }}" class="img-responsive"></a>
+<p id = "tipo"><b> Tareas </b></p>
+</div>
+
+<div class="col-md-4">
+<a href = "{{ path('evo_user_mywork') }}"><img src="{{ asset('img/horario.png') }}" class="img-responsive"></a>
+<p id = "tipo"><b>MyWork</b></p>
+</div>
+</div>
+
+<STYLE TYPE="text/css" MEDIA=screen>
+
+  .footer-distributed{ margin-top: 600px;  }
+ 
+</STYLE>
+{% endif %}
+
+
+
+
+{% if is_granted('ROLE_ADMIN') %}
+<div class="col-md-12" id = "tipoOpciones">
+<div class="col-md-4">
+{% for user in pagination %}
+
+<a href = "{{ path('evo_user_edit', { id: user.id }) }}">{% endfor %}
+<img src="{{ asset('img/editarp.jpg') }}" class="img-responsive"></a>
+<p id = "tipo"><b> Editar Perfil </b></p>
+</div>
+
+<div class="col-md-4">
+<a href = "{{ path('evo_user_listado') }}"><img src="{{ asset('img/personal.png') }}" class="img-responsive"></a>
+<p id = "tipo"><b>Personal</b></p>
+</div>
+
+<div class="col-md-4">
+<a href = "{{ path('evo_proveedores_listadoproveedores') }}"><img src="{{ asset('img/proveedores.png') }}" class="img-responsive"></a>
+<p id = "tipo"><b>Proveedores</b></p>
+</div>
+
+<div class="col-md-4">
+<a href = "{{ path('evo_task_listado') }}"><img src="{{ asset('img/incidencia.png') }}" class="img-responsive"></a>
+<p id = "tipo"><b> Gestión de tareas </b></p>
+</div>
+
+<div class="col-md-4">
+<a href = "{{ path('evo_productos_listadoproductos') }}"><img src="{{ asset('img/listaproductos.png') }}" class="img-responsive"></a>
+<p id = "tipo"><b>Listado de productos</b></p>
+</div>
+
+
+<div class="col-md-4">
+<a href = "{{ path('evo_pedidos_listadopedidos') }}"><img src="{{ asset('img/pedidos.png') }}" class="img-responsive"></a>
+<p id = "tipo"><b>Listado de pedidos/ventas</b></p>
+</div>
+</div>
+
+<STYLE TYPE="text/css" MEDIA=screen>
+
+  .footer-distributed{ margin-top: 800px;  }
+ 
+</STYLE>
+{% endif %}
+
+
+
+
+{% endblock %}

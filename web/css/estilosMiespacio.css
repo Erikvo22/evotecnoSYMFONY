@@ -1,0 +1,15 @@
+/*MENU TIPO DE OPCIONES*/
+#tipoOpciones{
+	top: 90px;
+	padding-left: 130px;
+}
+
+
+#tipoOpciones img{
+	width: 250px;
+	height: 250px;
+}
+
+#tipo{
+	font-size: 20px;
+}

@@ -1,0 +1,74 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %} Historial pedidos {% endblock %}
+
+{% block body %}
+
+<meta charset="UTF-8" />
+
+<!--NOMBRE DE LA PÁGINA -->
+
+<div class = "nombre">
+<ul>
+   <li><span class ="fa fa-history"></span>Historial de pedidos</li>
+</ul>
+</div>
+<br><br>
+
+
+
+	{{ parent() }}
+
+	{{ include('EVOUserBundle:Compras:messages/success.html.twig') }}
+
+	<div class = "container">
+<div class = "col-md-12">
+<div class = "table-responsive">
+
+
+{% if not pagination|length %}
+	<h2>No hay resultados</h2>
+{% endif %}
+				
+{% if pagination|length %}
+	<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+                            <th> {{ 'Producto' }} </th>
+							<th>{{ 'Fecha de Venta' }}</th>
+							<th>{{ 'Precio total' }}</th>
+							<th>{{ 'Direccion' }}</th>	
+						</tr>
+					</thead>
+					<tbody>
+				        {% for compras in pagination %}
+                            <tr data-id="{{ compras.id }}">
+                                <td>{{ compras.cantidad }} &nbsp {{ compras.productos.nombre }}</td>
+                                <td>{{ compras.fechacomp|date('d-m-Y') }}</td>
+                                <td>{{ compras.preciototal }}€</td>
+                                <td>{{ compras.direccion }}</td>
+             
+			                     
+				                </td>
+                            </tr>
+				        {% endfor %}
+					</tbody>
+				</table>
+				{% endif %}
+				{# display navigation #}
+				<div class="navigation">
+					{{ knp_pagination_render(pagination) }}
+				</div>
+
+</div>
+</div>
+</div>
+	
+	
+	
+	<STYLE TYPE="text/css" MEDIA=screen>
+
+  .footer-distributed{ margin-top: 250px;  }
+ 
+</STYLE>
+{% endblock %}

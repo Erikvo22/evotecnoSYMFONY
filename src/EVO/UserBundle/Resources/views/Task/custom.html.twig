@@ -1,0 +1,82 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Mis tareas{% endblock %}
+
+{% block body %}
+
+<meta charset="UTF-8" />
+
+	{{ parent() }}
+
+	{{ include('EVOUserBundle:Task:messages/success.html.twig') }}
+	{{ include('EVOUserBundle:Task:messages/warning.html.twig') }}
+
+	<div class="container">
+		<div class="col-md-12">
+			<div class="page-header margin-none">
+				<h2 class="padding-none">Tareas</h2>
+			</div>
+			{% if not pagination|length %}
+				<h3>No hay tareas</h3>
+			{% endif %}
+			{% if pagination|length %}
+			<div class="table-responsive">
+				<p>
+				    Total records: <span id="total"> {{ pagination.getTotalItemCount }} </span>
+				</p>
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+							<th>{{ knp_pagination_sortable(pagination, 'Titulo', 't.title') }}</th>
+							<th>{{ knp_pagination_sortable(pagination, 'Date', 't.createdAt') }}</th>
+							<th>Usuario</th>
+							<th>{{ knp_pagination_sortable(pagination, 'Estado', 't.status') }}</th>
+							<th>Acciones</th>
+						</tr>
+					</thead>
+					<tbody>
+				        {% for task in pagination %}
+				            <tr data-id="{{ task.id }}">
+				                <td>
+				                	<a href="{{ path('evo_task_view', { id: task.id }) }}">{{ task.title }}</a>
+				                </td>
+				                <td>{{ task.createdAt|date('d-m-Y H:i') }}</td>
+				                <td>{{ task.user.nombre }} {{ task.user.apellidos }}</td>
+				                <td>
+				                	{% if task.status == 0 %}
+										<span class="glyphicon glyphicon-time text-danger" title="Waiting" id="glyphicon-{{task.id}}"></span>
+									{% elseif task.status == 1 %}
+										<span class="glyphicon glyphicon-ok text-success" title="Finish"></span>
+				                	{% endif %}
+								</td>
+								<td class="actions">
+								    <a href="#" class="btn btn-sm btn-success btn-process" id="button-{{ task.id }}">
+								       Finalizar
+								    </a>
+								</td>
+				            </tr>
+				        {% endfor %}
+					</tbody>
+				</table>
+			{# display navigation #}
+			<div class="navigation">
+			    {{ knp_pagination_render(pagination) }}
+			</div>
+			</div>
+			{% endif %}
+		</div>
+	</div>
+
+	
+	
+	<STYLE TYPE="text/css" MEDIA=screen>
+
+  .footer-distributed{ margin-top: 250px;  }
+ 
+</STYLE>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/evouser/js/task-process.js') }}"></script>
+{% endblock %}

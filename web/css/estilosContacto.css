@@ -1,0 +1,47 @@
+/* ------ UBICACION--------*/
+
+/*Contenedor Principal*/
+#content{
+    width: 80%;
+    height: 400px;
+    margin: auto;
+    background: #1F1F1F;
+    color: #FFF;
+}
+
+/*Columna Izquierda*/
+#column1{
+    padding: 15px 0 0 15px;
+    width:20%;
+    height: 100%;
+    float: left;
+}
+
+/*Columna Derecha*/
+#column2{
+    width:60%;
+    height: 100%;
+    float:right;
+}
+
+#infoubica{
+    font-size: 16px;
+    line-height: 25px;
+    font-family: 'sans-serif';
+}
+
+
+/*PREGUNTA DE AYUDA*/
+#cuestion{
+	top: 120px;
+	
+}
+
+#consultenos p{
+	text-align: center;
+	font-size: 15px;
+}
+
+
+
+

@@ -1,0 +1,86 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Vista producto{% endblock %}
+
+{% block body %}
+
+<meta charset="UTF-8" />
+
+	{{ parent() }}
+	<div class="container well">
+	    <div class="col-md-9">
+	    <h2>{{ prod.nombre }}</h2>
+	        <br>
+	        <dl>
+	            <dd id = "viewpro">
+	                <img src = "{{ asset('img/productos/' ~  prod.img) }}">
+	                &nbsp;
+	            </dd>
+	            <br>
+	            
+	        	<dt>Descripción</dt>
+	            <dd>
+	                {{ prod.descripcion}}
+	                &nbsp;
+	            </dd>
+	            <br>
+	       
+	       		<dt>Cantidad</dt>
+	            <dd>
+	                {{ prod.cantidad}}
+	                &nbsp;
+	            </dd>
+	            <br>
+	        
+	            <dt>Precio de compra</dt>
+	            <dd>
+	                {{ prod.preciocomp }}€
+	                &nbsp;
+	            </dd>
+	            <br>
+	            
+	             <dt>Precio de venta</dt>
+	            <dd>
+	                {{ prod.preciov }}€
+	                &nbsp;
+	            </dd>
+	            <br>
+
+	            <dt>Tipo</dt>
+	            <dd>
+	                {{ prod.tipo }}
+	                &nbsp;
+	            </dd>
+	            <br>
+	            
+	             <dt>Proveedor</dt>
+	            <dd>
+	                {{ proveedor.fullName }}
+	                &nbsp;
+	            </dd>
+	            <br>
+	           
+	     
+	        </dl>
+	    </div>
+	    <div class="col-md-3">
+	    	<h3>Acciones</h3>
+			<p>
+		    	<a href="{{ path('evo_productos_edit', { id: prod.id }) }}" class="btn btn-primary btn-lg btn-block">
+		    		<span class="glyphicon glyphicon-edit"></span>
+		        	Editar Producto
+				 </a>
+			</p>
+			<p>
+			    {{ include('EVOUserBundle:Productos:forms/form.html.twig', { form: delete_form, message: '¿Estás seguro?'}) }}
+			</p>
+	    </div>
+	</div>
+	
+	
+	<STYLE TYPE="text/css" MEDIA=screen>
+
+  .footer-distributed{ margin-top: 100px;  }
+ 
+</STYLE>
+{% endblock %}

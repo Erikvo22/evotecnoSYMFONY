@@ -1,0 +1,4 @@
+services:
+#    evo_user.example:
+#        class: EVO\UserBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

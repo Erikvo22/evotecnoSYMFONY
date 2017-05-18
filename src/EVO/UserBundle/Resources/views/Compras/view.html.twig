@@ -1,0 +1,83 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Ventas{% endblock %}
+
+{% block body %}
+
+<meta charset="UTF-8" />
+
+	{{ parent() }}
+	<div class="container well">
+	    <div class="col-md-9">
+	    <h2>Venta nº {{ comp.id }}</h2>
+	        <br>
+	        <dl>
+	        	
+	            
+	        	<dt>Producto</dt>
+	            <dd>
+	               {{ producto.nombre}}
+	                &nbsp;
+	            </dd>
+	            <br>
+	            
+	            
+	             <dd id = "viewpro">
+	                <img src = "{{ asset('img/productos/' ~  producto.img) }}">
+	                &nbsp;
+	            </dd>
+	            <br>
+	            
+	            <dt>Cantidad</dt>
+	            <dd>
+	                {{ comp.cantidad}}
+	                &nbsp;
+	            </dd>
+	            <br>
+	       
+	       		<dt>Precio</dt>
+	            <dd>
+	                {{ comp.preciototal}}€
+	                &nbsp;
+	            </dd>
+	            <br>
+	        
+	            <dt>Dirección</dt>
+	            <dd>
+	                {{ comp.direccion }}
+	                &nbsp;
+	            </dd>
+	            <br>
+	            	
+	             <dt>Cliente</dt>
+	            <dd>{{ user.fullName}}
+	              
+	                &nbsp;
+	            </dd>
+	            <br>
+
+	           
+	     
+	        </dl>
+	    </div>
+	    <div class="col-md-3">
+	    	<h3>Acciones</h3>
+			<p>
+		    	<a href="{{ path('evo_compras_edit', { id: comp.id }) }}" class="btn btn-primary btn-lg btn-block">
+		    		<span class="glyphicon glyphicon-edit"></span>
+		        	Editar Venta
+				 </a>
+			</p>
+			<p>
+			    {{ include('EVOUserBundle:Compras:forms/form.html.twig', { form: delete_form, message: '¿Estás seguro?'}) }}
+			</p>
+	    </div>
+	</div>
+	
+	
+	<STYLE TYPE="text/css" MEDIA=screen>
+
+  .footer-distributed{ margin-top: 100px;  }
+ 
+</STYLE>
+{% endblock %}

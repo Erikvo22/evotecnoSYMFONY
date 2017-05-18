@@ -1,0 +1,94 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/book/security.html
+security:
+    
+    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+    providers:
+      our_db_provider:
+          entity: 
+             class: EVO\UserBundle\Entity\User
+             property: username
+       
+  
+    firewalls:
+        default:
+            anonymous: ~
+            http_basic: ~
+            form_login:
+                login_path: /login
+                check_path: /login_check
+                # field names for the username and password fields:
+                username_parameter: _username
+                password_parameter: _password
+                # default_target_path: default_security_target
+                # always_use_default_target_path: true
+            logout:
+                path:   /logout
+                target: /login
+                
+        
+     
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            anonymous: ~
+            http_basic: ~
+            # activate different ways to authenticate
+
+            # http_basic: ~
+            # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
+
+            # form_login: ~
+            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+         
+         
+    encoders:
+         EVO\UserBundle\Entity\User:
+              algorithm: bcrypt
+              cost: 12
+         EVO\UserBundle\Entity\Clientes:
+              algorithm: bcrypt
+              cost: 12
+              
+              
+    
+    access_control:
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/user/registro, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/user/miespacio, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/user/view, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/user/logout, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/user/listado, roles: ROLE_ADMIN }
+        - { path: ^/user/add, roles: ROLE_ADMIN }
+        - { path: ^/user/edit, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/user/editC, roles: IS_AUTHENTICATED_FULLY}
+        - { path: ^/user/mywork, roles: ROLE_EMPLEADO }
+        - { path: ^/user/delete, roles: ROLE_ADMIN }
+        - { path: ^/task/listado, roles: ROLE_ADMIN }
+        - { path: ^/task/add, roles: ROLE_ADMIN }
+        - { path: ^/task/edit, roles: ROLE_ADMIN }
+        - { path: ^/task/view, roles: [ROLE_ADMIN, ROLE_EMPLEADO] }
+        - { path: ^/task/custom, roles: ROLE_EMPLEADO }
+        - { path: ^/proveedores/listadoproveedores, roles: ROLE_ADMIN }
+        - { path: ^/proveedores/add, roles: ROLE_ADMIN }
+        - { path: ^/proveedores/edit, roles: ROLE_ADMIN }
+        - { path: ^/proveedores/view, roles: ROLE_ADMIN }
+        - { path: ^/productos/listadoproductos, roles: ROLE_ADMIN }
+        - { path: ^/productos/add, roles: ROLE_ADMIN }
+        - { path: ^/productos/edit, roles: ROLE_ADMIN }
+        - { path: ^/productos/view, roles: ROLE_ADMIN }
+        - { path: ^/pedidos/listadopedidos, roles: ROLE_ADMIN }
+        - { path: ^/pedidos/add, roles: ROLE_ADMIN }
+        - { path: ^/pedidos/edit, roles: ROLE_ADMIN }
+        - { path: ^/pedidos/view, roles: ROLE_ADMIN }
+        - { path: ^/compras/add, roles: ROLE_ADMIN }
+        - { path: ^/compras/edit, roles: ROLE_ADMIN }
+        - { path: ^/compras/view, roles: ROLE_ADMIN }
+        - { path: ^/compras/historial, roles: ROLE_USER }
+        - { path: ^/compras/carrito, roles: ROLE_USER } 
+        
+        
+        

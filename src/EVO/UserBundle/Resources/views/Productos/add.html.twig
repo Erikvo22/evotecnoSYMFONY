@@ -1,0 +1,99 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Nuevos Productos {% endblock %}
+
+{% block body %}
+<meta charset="UTF-8" />
+
+ <!--NOMBRE DE LA PÁGINA -->
+<div class = "nombre">
+<ul>
+   <li><span class ="fa fa-users"></span>Nuevo producto</li>
+</ul>
+</div>  
+
+
+<!-- FORMULARIO -->
+
+{{ parent() }}
+<div class = "main container">
+<div class = "row well">
+<div class = "col-md-6">
+
+{{ form_start(form, {'attr' :  {'novalidate' : 'novalidate',  'grupo' : 'form'}} )}}
+
+
+<div class="form-group">
+ {{ form_label(form.nombre) }}
+ {{ form_widget(form.nombre, { 'attr' : {'class' : 'form-control'} }) }}
+  <span class="text-danger">{{ form_errors(form.nombre) }}</span>
+ </div>
+
+
+<div class = "form-group">
+<label>Descripción</label>
+{{ form_widget(form.descripcion, {'attr' : {'class' : 'form-control'} } )}}
+<span class = "text-danger">{{ form_errors(form.descripcion) }}</span>
+</div>
+
+<div class = "form-group">
+<label>Cantidad</label>
+{{ form_widget(form.cantidad, {'attr' : {'class' : 'form-control'} } )}}
+<span class = "text-danger">{{ form_errors(form.cantidad) }}</span>
+</div>
+
+
+<div class = "form-group">
+<label>Precio de compra</label>
+{{ form_widget(form.preciocomp, {'attr' : {'class' : 'form-control'} } )}}
+<span class = "text-danger">{{ form_errors(form.preciocomp) }}</span>
+</div>
+
+
+<div class = "form-group">
+<label>Precio de venta</label>
+{{ form_widget(form.preciov, {'attr' : {'class' : 'form-control'} } )}}
+<span class = "text-danger">{{ form_errors(form.preciov) }}</span>
+</div>
+
+
+<div class = "form-group">
+<label>Tipo</label>
+{{ form_widget(form.tipo, {'attr' : {'class' : 'form-control'} } )}}
+<span class = "text-danger">{{ form_errors(form.tipo) }}</span>
+</div>
+
+
+<div class = "form-group">
+<label>Proveedor</label>
+{{ form_widget(form.proveedores, {'attr' : {'class' : 'form-control'} } )}}
+<span class = "text-danger">{{ form_errors(form.proveedores) }}</span>
+</div>
+
+
+<div class = "form-group">
+<label>Imagen</label>
+{{ form_widget(form.img)}}
+<span class = "text-danger">{{ form_errors(form.img) }}</span>
+</div>
+
+
+
+<p>
+{{ form_widget(form.save, {'label': 'Crear Producto', 'attr': {'class' : 'btn btn-success'}}) }}
+</p>
+
+
+{{ form_end(form) }}
+</div>
+</div>
+</div>
+
+
+<STYLE TYPE="text/css" MEDIA=screen>
+
+  .footer-distributed{ margin-top: 100px;  }
+ 
+</STYLE>
+
+{% endblock %}

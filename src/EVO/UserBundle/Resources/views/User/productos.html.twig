@@ -1,0 +1,90 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Productos {% endblock %}
+
+{% block body %}
+
+{{ parent() }}
+
+<meta charset="UTF-8" />
+
+<!--NOMBRE DE LA PÁGINA -->
+
+<div class = "nombre">
+<ul>
+   <li><span class ="icon-gift"></span>Productos</li>
+</ul>
+</div>
+<br><br>
+
+
+<!-- MENU VERTICAL -->
+<div class="col-md-12" id = "pro"> 
+<div class="col-md-3"> 
+<div class = "menuv">
+<ul>
+   <li><a href="{{ path('evo_user_productosmoviles') }}"><span class ="fa fa-mobile"></span>Móviles y Smartphone</a></li>
+   <li><a href="{{ path('evo_user_productosinformatica') }}"><span class ="fa fa-laptop"></span>Informática</a></li>
+   <li><a href="{{ path('evo_user_productosgelectro') }}"><span class ="fa fa-tachometer"></span>Grandes Electrodomésticos</a></li>
+   <li><a href="{{ path('evo_user_productospelectro') }}"><span class ="fa fa-home"></span>Pequeños Electrodomésticos</a></li>
+   <li><a href="{{ path('evo_user_productostv') }}"><span class ="fa fa-desktop"></span>TV</a></li>
+   <li><a href="{{ path('evo_user_productossonido') }}"><span class ="fa fa-headphones"></span>Sonido</a></li>
+   <li><a href="{{ path('evo_user_productosfotografia') }}"><span class ="fa fa-video-camera"></span>Fotografía y Vídeo</a></li>
+   <li><a href="{{ path('evo_user_productosconsola') }}"><span class ="fa fa-gamepad"></span>Consolas y juegos</a></li>
+   <li><a href="{{ path('evo_user_productoselectrodep') }}"><span class ="fa fa-bicycle"></span>Electrónica deportiva y drones</a></li>
+</ul>
+</div>
+</div>
+
+
+<!--- LISTA DESPLEGABLE -->
+<div class="col-md-9"> 
+
+<div class = "col-md-1">
+<form action="{{ path('evo_user_productospreciomenor') }}" method="POST"> 
+    <input type="submit" class="btn btn-success" value="Precio -" > 
+</form>
+</div>
+
+<div class = "col-md-1">
+<form action="{{ path('evo_user_productospreciomayor') }}" method="POST"> 
+    <input type="submit" class="btn btn-info" value="Precio +" > 
+</form>
+</div>
+
+</div>
+
+
+<!-- PRODUCTOS -->
+
+{% for prod in pagination %}
+<data-id="{{ prod.id }}">
+<div class="col-md-4"> 	
+<div id = "producto">
+<a href = "{{ path('evo_productos_prod', { id: prod.id }) }}"><img src = "{{ asset('img/productos/' ~ prod.img) }}"></a>
+<p><b>{{ prod.nombre }}</b></p>
+<div class="col-md-5">
+<p id = "precio">{{  prod.preciov }}€</p>
+</div>
+<div class="col-md-6">
+</div>
+</div>
+</div>
+
+{% endfor %}
+</div>
+
+{# display navigation #}
+<div class="navigation">
+<center> {{ knp_pagination_render(pagination) }} </center>
+</div>
+
+<STYLE TYPE="text/css" MEDIA=screen>
+
+  .footer-distributed{ margin-top: 600px;  }
+ 
+</STYLE>
+
+
+
+{% endblock %}

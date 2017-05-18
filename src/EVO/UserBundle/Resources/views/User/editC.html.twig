@@ -1,0 +1,117 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Editar Perfil {% endblock %}
+
+{% block body %}
+
+<meta charset="UTF-8" />
+
+ <!--NOMBRE DE LA PÁGINA -->
+<div class = "nombre">
+<ul>
+   <li><span class ="fa fa-users"></span>Editar usuario</li>
+</ul>
+</div>  
+
+
+
+    {{ parent() }}
+    {{ include('EVOUserBundle:User:messages/success.html.twig') }}
+	<div class="main container">
+		<div class="row well">
+			<div class="col-md-6">
+				{{ form_start(form, {'attr' :  {'novalidate' : 'novalidate', 'grupo' : 'form'}} )}}
+
+
+
+
+
+<div class = "form-group">
+{{ form_label(form.nombre) }}
+{{ form_widget(form.nombre, {'attr' : {'class' : 'form-control'} } )}}
+<span class = "text-danger">{{ form_errors(form.nombre) }}</span>
+</div>
+
+
+<div class = "form-group">
+{{ form_label(form.apellidos) }}
+{{ form_widget(form.apellidos, {'attr' : {'class' : 'form-control'} } )}}
+<span class = "text-danger">{{ form_errors(form.apellidos) }}</span>
+</div>
+
+
+<div class = "form-group">
+{{ form_label(form.dni) }}
+{{ form_widget(form.dni, {'attr' : {'class' : 'form-control'} } )}}
+<span class = "text-danger">{{ form_errors(form.dni) }}</span>
+</div>
+
+
+<div class = "form-group">
+<label> Teléfono </label>
+{{ form_widget(form.telefono, {'attr' : {'class' : 'form-control'} } )}}
+<span class = "text-danger">{{ form_errors(form.telefono) }}</span>
+</div>
+
+
+<div class = "form-group">
+<label> Dirección </label>
+{{ form_widget(form.direccion, {'attr' : {'class' : 'form-control'} } )}}
+<span class = "text-danger">{{ form_errors(form.direccion) }}</span>
+</div>
+
+
+<div class = "form-group">
+{{ form_label(form.provincia) }}
+{{ form_widget(form.provincia, {'attr' : {'class' : 'form-control'} } )}}
+<span class = "text-danger">{{ form_errors(form.provincia) }}</span>
+</div>
+
+
+<div class = "form-group">
+<label> Fecha de nacimiento </label>
+{{ form_widget(form.fnac, {'attr' : {'class' : 'form-control'} } )}}
+<span class = "text-danger">{{ form_errors(form.fnac) }}</span>
+</div>
+
+
+<div class = "form-group">
+{{ form_label(form.email) }}
+{{ form_widget(form.email, {'attr' : {'class' : 'form-control'} } )}}
+<span class = "text-danger">{{ form_errors(form.email) }}</span>
+</div>
+
+
+<h3><strong>Datos de acceso</strong></h3>
+
+
+<div class = "form-group">
+{{ form_label(form.username) }}
+{{ form_widget(form.username, {'attr' : {'class' : 'form-control'} } )}}
+<span class = "text-danger">{{ form_errors(form.username) }}</span>
+</div>
+
+<div class = "form-group">
+{{ form_label(form.password) }}
+{{ form_widget(form.password, {'attr' : {'class' : 'form-control'} } )}}
+<span class = "text-danger">{{ form_errors(form.password) }}</span>
+</div>
+
+
+<p>
+{{ form_widget(form.save, {'label': 'Guardar', 'attr': {'class' : 'btn btn-success'}}) }}
+</p>
+
+
+{{ form_end(form) }}
+			</div>
+		</div>
+	</div>
+	
+	
+	<STYLE TYPE="text/css" MEDIA=screen>
+
+  .footer-distributed{ margin-top: 100px;  }
+ 
+</STYLE>
+{% endblock %}

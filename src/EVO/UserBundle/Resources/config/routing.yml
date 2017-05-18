@@ -1,0 +1,474 @@
+evo_user_index:
+  path: user/index
+  defaults: {_controller: EVOUserBundle:User:index } 
+  
+
+evo_user_servicios:
+  path: user/servicios
+  defaults: {_controller: EVOUserBundle:User:servicios } 
+  
+
+evo_user_contacto:
+  path: user/contacto
+  defaults: {_controller: EVOUserBundle:User:contacto } 
+  
+  
+evo_user_productos:
+  path: user/productos
+  defaults: {_controller: EVOUserBundle:User:productos } 
+
+evo_user_listado:
+  path: user/listado
+  defaults: {_controller: EVOUserBundle:User:listado }
+  
+
+evo_user_miespacio:
+  path: user/miespacio
+  defaults: {_controller: EVOUserBundle:User:miespacio }     
+
+
+evo_user_add:
+  path: user/add
+  defaults: {_controller: EVOUserBundle:User:add }  
+  
+  
+evo_user_create:
+  path: user/create
+  defaults: {_controller: EVOUserBundle:User:create }
+  methods: POST  
+   
+
+evo_user_edit:
+  path: user/edit/{id}
+  defaults: {_controller: EVOUserBundle:User:edit }   
+
+
+evo_user_update:
+  path: user/update/{id}
+  defaults: {_controller: EVOUserBundle:User:update }  
+  methods: [POST, PUT] 
+  
+
+evo_user_view:
+  path: user/view/{id}
+  defaults: {_controller: EVOUserBundle:User:view }    
+
+
+evo_user_delete:
+  path: user/delete/{id}
+  defaults: { _controller: EVOUserBundle:User:delete }
+  methods: [POST, DELETE]
+ 
+ 
+evo_user_productosmoviles:
+  path: user/productosmoviles
+  defaults: {_controller: EVOUserBundle:User:productosmoviles } 
+
+
+evo_user_productosinformatica:
+  path: user/productosinformatica
+  defaults: {_controller: EVOUserBundle:User:productosinformatica } 
+
+
+evo_user_productosgelectro:
+  path: user/productosgelectro
+  defaults: {_controller: EVOUserBundle:User:productosgelectro } 
+
+
+evo_user_productospelectro:
+  path: user/productospelectro
+  defaults: {_controller: EVOUserBundle:User:productospelectro } 
+
+
+evo_user_productostv:
+  path: user/productostv
+  defaults: {_controller: EVOUserBundle:User:productostv } 
+
+
+evo_user_productossonido:
+  path: user/productossonido
+  defaults: {_controller: EVOUserBundle:User:productossonido } 
+
+
+evo_user_productosfotografia:
+  path: user/productosfotografia
+  defaults: {_controller: EVOUserBundle:User:productosfotografia } 
+
+
+evo_user_productosconsola:
+  path: user/productosconsola
+  defaults: {_controller: EVOUserBundle:User:productosconsola } 
+
+
+evo_user_productoselectrodep:
+  path: user/productoselectrodep
+  defaults: {_controller: EVOUserBundle:User:productoselectrodep }
+
+
+evo_user_productosbusqueda:
+  path: user/productosbusqueda
+  defaults: {_controller: EVOUserBundle:User:productosbusqueda }  
+
+
+evo_user_productospreciomayor:
+  path: user/productospreciomayor
+  defaults: {_controller: EVOUserBundle:User:productospreciomayor}  
+  
+
+evo_user_productospreciomenor:
+  path: user/productospreciomenor
+  defaults: {_controller: EVOUserBundle:User:productospreciomenor }  
+
+evo_user_mywork:
+  path: user/mywork
+  defaults: {_controller: EVOUserBundle:User:mywork }   
+
+
+
+
+
+
+
+
+
+evo_task_listado:
+    path:     task/listado
+    defaults: { _controller: EVOUserBundle:Task:listado }
+
+evo_task_add:
+    path:     task/add
+    defaults: { _controller: EVOUserBundle:Task:add }
+
+evo_task_create:
+    path:     task/create
+    defaults: { _controller: EVOUserBundle:Task:create }
+    methods:  POST
+
+evo_task_edit:
+    path:     task/edit/{id}
+    defaults: { _controller: EVOUserBundle:Task:edit }
+
+evo_task_update:
+    path:    task/update/{id}
+    defaults: { _controller: EVOUserBundle:Task:update }
+    methods:  [POST, PUT]
+
+evo_task_view:
+    path:     task/view/{id}
+    defaults: { _controller: EVOUserBundle:Task:view }
+
+evo_task_delete:
+    path:     task/delete/{id}
+    defaults: { _controller: EVOUserBundle:Task:delete }
+    methods:  [POST, DELETE]
+
+
+evo_task_custom:
+    path:     task/custom
+    defaults: { _controller: EVOUserBundle:Task:custom }
+    
+evo_task_process:
+    path:     task/process/{id}
+    defaults: { _controller: EVOUserBundle:Task:process }
+    methods:  [POST, PUT]    
+       
+
+
+
+
+  
+
+
+
+ 
+evo_user_login:
+  path: /login
+  defaults: {_controller: EVOUserBundle:Security:login }
+  
+
+evo_user_login_check:
+  path: /login_check
+  defaults: {_controller: EVOUserBundle:Security:loginCheck }
+  
+evo_user_logout:
+  path: /logout
+
+
+
+
+
+
+
+
+
+evo_user_redirect_add:
+    path: user/create
+    defaults:
+        _controller: EVOUserBundle:User:add
+        path: user/add
+        permanent: true
+
+
+evo_user_redirect_edit:
+    path: user/update/{id}
+    defaults:
+        _controller: EVOUserBundle:User:edit
+        path: user/edit/{id}
+        permanent: true
+        
+        
+evo_user_redirect_registro:
+    path: user/createR
+    defaults:
+        _controller: EVOUserBundle:User:registro
+        path: user/registro
+        permanent: true
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+evo_user_registro:
+  path: user/registro
+  defaults: {_controller: EVOUserBundle:User:registro } 
+  
+evo_user_createC:
+  path: user/createC
+  defaults: {_controller: EVOUserBundle:User:createC }
+  methods: POST  
+   
+
+evo_user_editC:
+  path: user/editC/{id}
+  defaults: {_controller: EVOUserBundle:User:editC }   
+
+
+evo_user_updateC:
+  path: user/updateC/{id}
+  defaults: {_controller: EVOUserBundle:User:updateC }  
+  methods: [POST, PUT] 
+  
+
+
+
+
+
+
+
+
+evo_proveedores_listadoproveedores:
+  path: proveedores/listadoproveedores
+  defaults: {_controller: EVOUserBundle:Proveedores:listadoproveedores } 
+  
+  
+evo_proveedores_add:
+  path: proveedores/add
+  defaults: {_controller: EVOUserBundle:Proveedores:add }  
+  
+  
+evo_proveedores_create:
+  path: proveedores/create
+  defaults: {_controller: EVOUserBundle:Proveedores:create }
+  methods: POST  
+   
+
+evo_proveedores_edit:
+  path: proveedores/edit/{id}
+  defaults: {_controller: EVOUserBundle:Proveedores:edit }   
+
+
+evo_proveedores_update:
+  path: proveedores/update/{id}
+  defaults: {_controller: EVOUserBundle:Proveedores:update }  
+  methods: [POST, PUT] 
+  
+
+evo_proveedores_view:
+  path: proveedores/view/{id}
+  defaults: {_controller: EVOUserBundle:Proveedores:view }    
+
+
+evo_proveedores_delete:
+  path: proveedores/delete/{id}
+  defaults: { _controller: EVOUserBundle:Proveedores:delete }
+  methods: [POST, DELETE]
+
+
+
+
+
+
+
+
+
+
+
+evo_productos_listadoproductos:
+  path: productos/listadoproductos
+  defaults: {_controller: EVOUserBundle:Productos:listadoproductos } 
+  
+
+
+evo_productos_prod:
+  path: productos/prod/{id}
+  defaults: {_controller: EVOUserBundle:Productos:prod } 
+  
+  
+evo_productos_add:
+  path: productos/add
+  defaults: {_controller: EVOUserBundle:Productos:add }  
+  
+  
+evo_productos_create:
+  path: productos/create
+  defaults: {_controller: EVOUserBundle:Productos:create }
+  methods: POST  
+   
+
+evo_productos_edit:
+  path: productos/edit/{id}
+  defaults: {_controller: EVOUserBundle:Productos:edit }   
+
+
+evo_productos_update:
+  path: productos/update/{id}
+  defaults: {_controller: EVOUserBundle:Productos:update }  
+  methods: [POST, PUT] 
+  
+
+evo_productos_view:
+  path: productos/view/{id}
+  defaults: {_controller: EVOUserBundle:Productos:view }    
+
+
+evo_productos_delete:
+  path: productos/delete/{id}
+  defaults: { _controller: EVOUserBundle:Productos:delete }
+  methods: [POST, DELETE]
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+evo_pedidos_listadopedidos:
+  path: pedidos/listadopedidos
+  defaults: {_controller: EVOUserBundle:Pedidos:listadopedidos } 
+  
+
+evo_pedidos_add:
+  path: pedidos/add
+  defaults: {_controller: EVOUserBundle:Pedidos:add }  
+  
+  
+evo_pedidos_create:
+  path: pedidos/create
+  defaults: {_controller: EVOUserBundle:Pedidos:create }
+  methods: POST  
+   
+evo_pedidos_view:
+  path: pedidos/view/{id}
+  defaults: {_controller: EVOUserBundle:Pedidos:view }   
+  
+  
+evo_pedidos_edit:
+  path: pedidos/edit/{id}
+  defaults: {_controller: EVOUserBundle:Pedidos:edit }   
+
+
+evo_pedidos_update:
+  path: pedidos/update/{id}
+  defaults: {_controller: EVOUserBundle:Pedidos:update }  
+  methods: [POST, PUT] 
+  
+
+
+evo_pedidos_delete:
+  path: pedidos/delete/{id}
+  defaults: { _controller: EVOUserBundle:Pedidos:delete }
+  methods: [POST, DELETE]
+  
+  
+evo_pedidos_process:
+    path:     pedidos/process/{id}
+    defaults: { _controller: EVOUserBundle:Pedidos:process }
+    methods:  [POST, PUT]  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+evo_compras_carrito:
+  path: compras/carrito
+  defaults: {_controller: EVOUserBundle:Compras:carrito } 
+  
+
+evo_compras_historial:
+  path: compras/historial
+  defaults: {_controller: EVOUserBundle:Compras:historial } 
+
+  
+evo_compras_add:
+  path: compras/add
+  defaults: {_controller: EVOUserBundle:Compras:add }  
+  
+  
+evo_compras_create:
+  path: compras/create
+  defaults: {_controller: EVOUserBundle:Compras:create }
+  methods: POST  
+   
+evo_compras_view:
+  path: compras/view/{id}
+  defaults: {_controller: EVOUserBundle:Compras:view }   
+  
+evo_compras_edit:
+  path: compras/edit/{id}
+  defaults: {_controller: EVOUserBundle:Compras:edit }   
+
+
+evo_compras_update:
+  path: compras/update/{id}
+  defaults: {_controller: EVOUserBundle:Compras:update }  
+  methods: [POST, PUT] 
+  
+
+
+evo_compras_delete:
+  path: compras/delete/{id}
+  defaults: { _controller: EVOUserBundle:Compras:delete }
+  methods: [POST, DELETE]
+  
+  
+evo_compras_process:
+    path:     compras/process/{id}
+    defaults: { _controller: EVOUserBundle:Compras:process }
+    methods:  [POST, PUT]  
+  
+

@@ -1,0 +1,137 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Perfil User{% endblock %}
+
+{% block body %}
+
+<meta charset="UTF-8" />
+
+	{{ parent() }}
+	<div class="container well">
+	    <div class="col-md-9">
+	    <h2>{{ user.nombre }} {{ user.apellidos }}</h2>
+	        <br>
+	        <dl>
+	        	<dt>Username</dt>
+	            <dd>
+	                {{ user.username }}
+	                &nbsp;
+	            </dd>
+	            <br>
+	       
+	        
+	            <dt>Nombre</dt>
+	            <dd>
+	                {{ user.nombre }}
+	                &nbsp;
+	            </dd>
+	            <br>
+
+	            <dt>Apellidos</dt>
+	            <dd>
+	                {{ user.apellidos }}
+	                &nbsp;
+	            </dd>
+	            <br>
+	            
+	            <dt>DNI</dt>
+	            <dd>
+	                {{ user.dni }}
+	                &nbsp;
+	            </dd>
+	            <br>
+	            
+	            <dt>Fecha de nacimiento</dt>
+	            <dd>
+	                {{ user.fnac }}
+	                &nbsp;
+	            </dd>
+	            <br>
+
+	            <dt>Email</dt>
+	            <dd>
+	                {{ user.email }}
+	                &nbsp;
+	            </dd>
+	            <br>
+	            
+	            <dt>Provincia</dt>
+	            <dd>
+	                {{ user.provincia }}
+	                &nbsp;
+	            </dd>
+	            <br>
+	            
+	            <dt>Dirección</dt>
+	            <dd>
+	                {{ user.direccion }}
+	                &nbsp;
+	            </dd>
+	            <br>
+	  			
+	  			
+	  			<dt>Teléfono</dt>
+	            <dd>
+	                {{ user.telefono }}
+	                &nbsp;
+	            </dd>
+	            <br>
+
+	            <dt>Grupo</dt>
+	            <dd>
+                	{% if user.role == 'ROLE_ADMIN' %}
+						Administrador
+					{% elseif user.role == 'ROLE_USER' %}
+						Cliente
+					{% elseif user.role == 'ROLE_EMPLEADO' %}
+						Empleado
+                	{% endif %}
+	                &nbsp;
+	            </dd>
+	            <br>
+	            
+	            
+	            <dt>Active</dt>
+	            <dd>
+	                {{ user.isActive }}
+	                &nbsp;
+	            </dd>
+	            <br>
+
+
+	            <dt>Creación de la cuenta</dt>
+	            <dd>
+	                {{ user.createdAt|date('d-m-Y H:i') }}
+	                &nbsp;
+	            </dd>
+	            <br>
+
+	            <dt>Última actividad</dt>
+	            <dd>
+	                {{ user.updatedAt|date('d-m-Y H:i') }}
+	                &nbsp;
+	            </dd>
+	            <br>
+	        </dl>
+	    </div>
+	    <div class="col-md-3">
+	    	<h3>Acciones</h3>
+			<p>
+		    	<a href="{{ path('evo_user_edit', { id: user.id }) }}" class="btn btn-primary btn-lg btn-block">
+		    		<span class="glyphicon glyphicon-edit"></span>
+		        	Editar Usuario
+				 </a>
+			</p>
+			<p>
+			    {{ include('EVOUserBundle:User:forms/form.html.twig', { form: delete_form, message: '¿Estás seguro?'}) }}
+			</p>
+	    </div>
+	</div>
+	
+	
+	<STYLE TYPE="text/css" MEDIA=screen>
+
+  .footer-distributed{ margin-top: 100px;  }
+ 
+</STYLE>
+{% endblock %}

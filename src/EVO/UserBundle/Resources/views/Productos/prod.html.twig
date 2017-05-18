@@ -1,0 +1,54 @@
+{% extends 'layout.html.twig' %}
+
+{% for prod in prod %}
+
+{% block title %} {{  prod.nombre }}  {% endblock %}
+
+{% block body %}
+
+<meta charset="UTF-8" />
+
+ {{ parent() }}
+
+ <!--NOMBRE DE LA PÁGINA -->
+<div class = "nombre">
+<ul>
+   <li><span class ="fa fa-paper-plane"></span> {{  prod.nombre }}</li>
+</ul>
+</div>  
+
+
+
+<div class = "col-md-12">
+<div class = "col-md-6">
+<div id = "imgprod">
+<img src = "{{ asset('img/productos/' ~ prod.img) }}">
+</div>
+</div>
+
+
+<div class = "col-md-6">
+<div id = "precioprod">
+{{ prod.preciov }}€
+</div>
+
+<div id = "descprod">
+{{ prod.descripcion }}
+</div>
+
+
+<div id = "botonprod">
+<center><button type="button" class="btn btn-success" disabled>Añadir<span class = "fa fa-shopping-cart"></span></button></center>
+</div>
+</div>
+</div>
+
+
+<STYLE TYPE="text/css" MEDIA=screen>
+
+  .footer-distributed{ margin-top: 600px;  }
+ 
+</STYLE>
+
+{% endblock %}
+{% endfor %}

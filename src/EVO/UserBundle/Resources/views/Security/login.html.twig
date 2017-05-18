@@ -1,0 +1,78 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Log In {% endblock %}
+
+{% block body %}
+
+<meta charset="UTF-8" />
+
+{{ parent() }}
+
+
+
+<!--NOMBRE DE LA PÁGINA -->
+<div class = "nombre">
+<ul>
+   <li><span class ="fa fa-users"></span>Iniciar Sesión</li>
+</ul>
+</div>  
+  
+  {{ include('EVOUserBundle:User:messages/success.html.twig') }}
+ 
+
+<!--MENU TIPO DE USUARIOS-->
+<div class="col-md-12" id = "tipocuentas">
+<div class="col-md-6" id="user">
+<img src="{{ asset('img/user.jpg') }}" class="img-responsive">
+<p id = "tipo"><b> Usuarios / Empleados / Administradores </b></p>
+</div>
+
+
+
+
+<!-- INICIO SESION -->
+<div class="col-md-4" id="inicioSesionu">
+<form action = "{{ path('evo_user_login_check') }}" method = "post"  class="form-signin">
+
+
+{% if error %}
+<div class = "text-danger">
+<p>
+	<strong>
+	{{ error.messageKey }}
+	</strong>
+</p>
+</div>
+{% endif %}
+
+
+
+
+     <h2>Entrar en EVO TECNO</h2>
+        <fieldset>
+		
+         <b>Username:</b>
+         <br>
+          <div class="col-md-12">
+          <input type="text" class="form-control" id="username" name="_username" value ="{{ last_username }}" placeholder = "Username" required autofocus/>
+		  </div>
+          <br><br>
+            
+		<b>Contraseña:</b>
+          <br>
+         <div class="col-md-12">
+		<input type="password" class="form-control" id="password" name = "_password" placeholder = "Password" required/>
+         </div>                    
+        
+        <input type = "hidden" name= "_target_path" value="evo_user_index"/>
+		
+			<br><br>
+       <button type="submit" class="btn btn-lg btn-primary btn-block">{{ 'Entrar'}}</button>
+       </fieldset>
+       </form><br>
+       <p id = "sugerencia"><a href = "{{ path('evo_user_registro') }}">Si no te has registrado, haz click aquí</a><p>	
+       </div>
+	   </div>
+
+
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Vista tareas{% endblock %}
+
+{% block body %}
+
+<meta charset="UTF-8" />
+
+
+	{{ parent() }}
+	<div class="container well">
+	    <div class="col-md-9">
+	    <h2>{{ task.title }}</h2>
+	        <br>
+	        <dl>
+	            <dt>{{ 'Descripción'}}</dt>
+	            <dd>
+	                {{ task.description }}
+	                &nbsp;
+	            </dd>
+	            <br>
+
+	            <dt>{{ 'User' }}</dt>
+	            <dd>
+	                {{ user.fullName }}
+	                &nbsp;
+	            </dd>
+	            <br>
+
+	            <dt>{{ 'Status' }}</dt>
+	            <dd>
+                	{% if task.status == 0 %}
+                	    <span class="text-danger">{{ 'Waiting'}}</span>
+                	{% elseif task.status == 1 %}
+                	    <span class="text-success">{{ 'Finish'}}</span>
+                	{% endif %}
+	                &nbsp;
+	            </dd>
+	            <br>
+
+	            <dt>{{ 'Creado' }}</dt>
+	            <dd>
+	                {{ task.createdAt|date('d-m-Y H:i') }}
+	                &nbsp;
+	            </dd>
+	            <br>
+
+	            <dt>{{ 'Última vez' }}</dt>
+	            <dd>
+	                {{ task.updatedAt|date('d-m-Y H:i') }}
+	                &nbsp;
+	            </dd>
+	            <br>
+	        </dl>
+	    </div>
+	    {% if is_granted('ROLE_ADMIN') %}
+	    <div class="col-md-3">
+	        <h3>{{ 'Actions'}}:</h3>
+	        <p>
+	            <a href="{{ path('evo_task_edit', {id: task.id}) }}" class="btn btn-primary btn-lg btn-block">
+	                <span class="glyphicon glyphicon-edit"></span>
+	                {{ 'Editar'}}
+	            </a>
+	        </p>
+	        <p>
+	            {{ include('EVOUserBundle:Task:forms/form.html.twig', { form: delete_form, message: '¿Estás seguro?'}) }}
+	        </p>
+	    </div>
+	    {% endif %}
+	</div>
+	
+	<STYLE TYPE="text/css" MEDIA=screen>
+
+  .footer-distributed{ margin-top: 100px;  }
+ 
+</STYLE>
+{% endblock %}

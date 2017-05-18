@@ -1,0 +1,81 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Editar Pedido{% endblock %}
+
+{% block body %}
+
+<meta charset="UTF-8" />
+
+ <!--NOMBRE DE LA PÁGINA -->
+<div class = "nombre">
+<ul>
+   <li><span class ="fa fa-folder"></span>Editar pedido</li>
+</ul>
+</div>  
+
+
+
+    {{ parent() }}
+    {{ include('EVOUserBundle:Pedidos:messages/success.html.twig') }}
+	<div class="main container">
+		<div class="row well">
+			<div class="col-md-6">
+				{{ form_start(form, {'attr' :  {'novalidate' : 'novalidate', 'grupo' : 'form'}} )}}
+
+
+
+
+<div class="form-group">
+<label>Productos</label>
+ {{ form_widget(form.productos, { 'attr' : {'class' : 'form-control'} }) }}
+  <span class="text-danger">{{ form_errors(form.productos) }}</span>
+ </div>
+
+
+<div class = "form-group">
+<label>Proveedor</label>
+{{ form_widget(form.proveedores, {'attr' : {'class' : 'form-control'} } )}}
+<span class = "text-danger">{{ form_errors(form.proveedores) }}</span>
+</div>
+
+<div class = "form-group">
+<label>Cantidad</label>
+{{ form_widget(form.cantidad, {'attr' : {'class' : 'form-control'} } )}}
+<span class = "text-danger">{{ form_errors(form.cantidad) }}</span>
+</div>
+
+
+<div class = "form-group">
+<label>Fecha de pedido</label>
+{{ form_widget(form.fechapedido, {'attr' : {'class' : 'form-control'} } )}}
+<span class = "text-danger">{{ form_errors(form.fechapedido) }}</span>
+</div>
+
+
+<div class = "form-group">
+<label>Descripción</label>
+{{ form_widget(form.otros, {'attr' : {'class' : 'form-control'} } )}}
+<span class = "text-danger">{{ form_errors(form.otros) }}</span>
+</div>
+
+
+
+<p>
+{{ form_widget(form.save, {'label': 'Modificar Producto', 'attr': {'class' : 'btn btn-success'}}) }}
+</p>
+
+
+
+
+{{ form_end(form) }}
+			</div>
+		</div>
+	</div>
+	
+	
+	<STYLE TYPE="text/css" MEDIA=screen>
+
+  .footer-distributed{ margin-top: 100px;  }
+ 
+</STYLE>
+{% endblock %}

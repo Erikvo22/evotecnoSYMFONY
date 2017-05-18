@@ -1,0 +1,87 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}EVO TECNO - La informática en tus manos {% endblock %}
+
+{% block body %}
+
+ {{ parent() }}
+ 
+<meta charset="UTF-8" />
+
+<!-- SLIDER --->
+<div id = "c-slider">
+	<div id = "slider">
+	<section>
+		<img src = "{{ asset('img/s1.jpg') }}" alt = "">
+	</section>
+	<section>
+		<img src = "{{ asset('img/s2.jpg') }}" alt = "">
+	</section>
+	<section>
+		<img src = "{{ asset('img/s3.jpg') }}" alt = "">
+	</section>
+	</div>
+	<div id = "btn-prev">&#60;</div>
+	<div id = "btn-next">&#62;</div>
+	</div>
+
+	
+	
+<!-- REDES SOCIALES -->
+  <div class="demo">
+            <ul>
+                <li><a href="#" title=""><span class="icon"><i aria-hidden="true" class="icon-facebook">
+                </i></span></a></li>
+                <li><a href="#" title=""><span class="icon"><i aria-hidden="true" class="icon-google-plus">
+                </i></span></a> </li>
+                <li><a href="#" title=""><span class="icon"><i aria-hidden="true" class="icon-twitter">
+                </i></span></a> </li>
+                <li><a href="#" title=""><span class="icon"><i aria-hidden="true" class="icon-pinterest">
+                </i></span></a> </li>
+            </ul>
+        </div>
+<br><br><br><br><br>	
+	
+	
+
+<!-- MENU VERTICAL -->
+<div class="col-md-12" id = "pro"> 
+<div class="col-md-3"> 
+<div class = "menuv">
+<ul>
+   <li><a href="{{ path('evo_user_productosmoviles') }}"><span class ="fa fa-mobile"></span>Móviles y Smartphone</a></li>
+   <li><a href="{{ path('evo_user_productosinformatica') }}"><span class ="fa fa-laptop"></span>Informática</a></li>
+   <li><a href="{{ path('evo_user_productosgelectro') }}"><span class ="fa fa-tachometer"></span>Grandes Electrodomésticos</a></li>
+   <li><a href="{{ path('evo_user_productospelectro') }}"><span class ="fa fa-home"></span>Pequeños Electrodomésticos</a></li>
+   <li><a href="{{ path('evo_user_productostv') }}"><span class ="fa fa-desktop"></span>TV</a></li>
+   <li><a href="{{ path('evo_user_productossonido') }}"><span class ="fa fa-headphones"></span>Sonido</a></li>
+   <li><a href="{{ path('evo_user_productosfotografia') }}"><span class ="fa fa-video-camera"></span>Fotografía y Vídeo</a></li>
+   <li><a href="{{ path('evo_user_productosconsola') }}"><span class ="fa fa-gamepad"></span>Consolas y juegos</a></li>
+   <li><a href="{{ path('evo_user_productoselectrodep') }}"><span class ="fa fa-bicycle"></span>Electrónica deportiva y drones</a></li>
+</ul>
+</div>
+</div>
+
+
+<!-- PRODUCTOS -->
+{% for prod in pagination %}
+
+<tr data-id="{{ prod.id }}">
+<div class="col-md-3"> 	
+<div id = "producto">
+<a href = "{{ path('evo_productos_prod', { id: prod.id }) }}"><img src = "{{ asset('img/productos/' ~ prod.img) }}"></a>
+<p><b>{{ prod.nombre }}</b></p>
+<div class="col-md-4">
+<p id = "precio">{{  prod.preciov }}€</p>
+</div>
+<div class="col-md-8">
+</div>
+
+</div>
+</div>
+{% endfor %}
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,21 @@
+
+/*MENU TIPO DE OPCIONES*/
+#tipocuentas{
+	top:100px;
+	padding-left: 130px;
+}
+
+
+#tipocuentas img{
+	width: 250px;
+	height: 250px;
+}
+
+#tipo{
+	font-size: 20px;
+}
+
+#sugerencia{
+	font-size: 15px;
+	text-align: center;
+}

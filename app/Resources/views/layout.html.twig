@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}{% endblock %}</title>
+        {% block stylesheets %}
+        <link rel="stylesheet" type="text/css" href= "{{ asset('css/estilos.css') }}" media="screen">
+		<link rel="stylesheet" type="text/css" href= "{{ asset('css/estilosMiespacio.css') }}" media="screen">
+		<link rel="stylesheet" type="text/css" href= "{{ asset('css/estilosContacto.css') }}" media="screen">
+		<link rel="stylesheet" type="text/css" href= "{{ asset('css/estilosRegistro.css') }}" media="screen">
+		<link rel="stylesheet" type="text/css" href= "{{ asset('css/estilosLogIn.css') }}" media="screen">
+		<link rel="stylesheet" href= "{{ asset('http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css') }}">
+		<link rel="stylesheet" href= "{{ asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css') }}">
+		 <link rel="stylesheet" href= "{{ asset('font-awesome/css/font-awesome.css') }}" >
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('img/cohete.png') }}" />
+    </head>
+    <body>
+    
+<div class="col-md-12" id = "hdr"> 
+<!-- LOGO -->
+<div class = "col-md-4">
+<div id = "logo">
+<a href ="{{ path('evo_user_index') }}"><img src = "{{ asset('img/logo.png') }}"></a>
+</div>
+</div>
+
+
+<!-- BUSCADOR -->
+<div class = "col-md-4">
+<div id = "buscador">
+<form action="{{ path('evo_user_productosbusqueda') }}" method="post"> 
+
+<fieldset class="searchform">
+<input type="text" placeholder="¿Qué productos deseas?" name = "buscar" class="searchfield"/> 
+</fieldset>
+
+</form>
+</div>
+</div>
+
+
+<!-- CARRITO U OTROS-->
+<div id = "carrito">
+{% if is_granted('ROLE_USER') %}
+<div class = "col-md-4">
+<div id = "logocarrito">
+<a href = "{{ path('evo_compras_carrito') }}"><img src = "{{ asset('img/carrito.jpg') }}" title = "Mi cesta de la compra"></a>
+</div>
+{% endif %}
+
+
+{% if is_granted('ROLE_EMPLEADO') %}
+<div id = "logoempleado">
+<a href = "{{ path('evo_user_miespacio') }}"><img src = "{{ asset('img/empleado.png') }}" title = "Empleado"></a>
+</div>
+{% endif %}
+
+
+{% if is_granted('ROLE_ADMIN') %}
+<div id = "logoadmin">
+<a href = "{{ path('evo_user_miespacio') }}"><img src = "{{ asset('img/admin.jpg') }}" title = "Administrador"></a>
+</div> 
+{% endif %}
+</div>
+</div>
+</div>
+<!-- FIN DEL HEADER-->
+
+
+<br><br><br><br><br><br>
+<!-- MENÚ PRINCIPAL -->
+<a id="touch-menu" class="mobile-menu" href="#"><i class="icon-reorder"></i>MENÚ</a>
+<div id = "navh">
+    <ul class="menu">
+   <li><a href="{{ path('evo_user_productos') }}"><i class="icon-gift"></i>PRODUCTOS</a>
+   <ul class="sub-menu">
+   <li><a href="{{ path('evo_user_productosmoviles') }}"><span class ="fa fa-mobile"></span>Móviles y Smartphone</a></li>
+   <li><a href="{{ path('evo_user_productosinformatica') }}"><span class ="fa fa-laptop"></span>Informática</a></li>
+   <li><a href="{{ path('evo_user_productosgelectro') }}"><span class ="fa fa-tachometer"></span>Grandes Electrodomésticos</a></li>
+   <li><a href="{{ path('evo_user_productospelectro') }}"><span class ="fa fa-home"></span>Pequeños Electrodomésticos</a></li>
+   <li><a href="{{ path('evo_user_productostv') }}"><span class ="fa fa-desktop"></span>TV</a></li>
+   <li><a href="{{ path('evo_user_productossonido') }}"><span class ="fa fa-headphones"></span>Sonido</a></li>
+   <li><a href="{{ path('evo_user_productosfotografia') }}"><span class ="fa fa-video-camera"></span>Fotografía y Vídeo</a></li>
+   <li><a href="{{ path('evo_user_productosconsola') }}"><span class ="fa fa-gamepad"></span>Consolas y juegos</a></li>
+   <li><a href="{{ path('evo_user_productoselectrodep') }}"><span class ="fa fa-bicycle"></span>Electrónica deportiva y drones</a></li>
+   </ul>
+   </li>
+  <li><a  href="{{ path('evo_user_servicios') }}"><i class="icon-legal"></i>SERVICIOS</a></li>
+  <li><a  href="{{ path('evo_user_contacto') }}"><i class="icon-map-marker"></i>CONTACTO</a></li>
+  
+  {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+  <li id = "sesionnoiniciada"><a  href="{{ path('evo_user_login') }}"><i class="icon-user"></i>INICIAR SESIÓN</a></li>
+  <li id = "sesionnoiniciada"><a  href="{{ path('evo_user_registro') }}"><i class="icon-unlock-alt"></i>REGISTRARSE</a></li>
+  {% endif %}
+  {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+  <li id = "sesioniniciada"><a  href="{{ path('evo_user_miespacio') }}"><i class="icon-user"></i>MI ESPACIO</a></li>
+  <li id = "sesioniniciada"><a  href="{{ path('evo_user_logout') }}"><span class="fa fa-sign-out"></span>CERRAR SESIÓN</a></li> 
+  {% endif %}
+  </ul>
+  </div>
+  
+  
+  
+
+
+ {% block body %}
+ 
+
+ 
+{% endblock %}
+
+
+
+
+
+			<!-- FOOTER --->
+			<footer class="footer-distributed">
+
+			<div class="footer-right">
+
+				<a href="#"><i class="fa fa-facebook"></i></a>
+				<a href="#"><i class="fa fa-twitter"></i></a>
+				<a href="#"><i class="icon-google-plus"></i></a>
+				<a href="#"><i class="icon-pinterest"></i></a>
+
+			</div>
+
+			<div class="footer-left">
+
+				<p class="footer-links">
+					<a href = "{{ path('evo_user_productos') }}">Productos</a>
+					·
+					<a href = "{{ path('evo_user_servicios') }}">Servicios</a>
+					·
+					<a href = "{{ path('evo_user_contacto') }}">Contacto</a>
+				</p>
+
+				<p>EVO TECNO &copy; 2017</p>
+				<p>Erik Viera Olivares</p>
+			</div>
+
+		</footer>
+        
+
+        {% block javascripts %}
+        <script src= "{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js') }}"></script>
+  		<script src= "{{ asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js') }}"></script>
+  		<script src = "{{ asset('js/menu.js') }}"></script>
+  		<script src = "{{ asset('js/slider.js') }}"></script>
+  		<script src = "{{ asset('js/bootbox.min.js') }}"></script>
+  		<script src="{{ asset('bundles/evouser/js/carrito.js') }}"></script>
+  		
+  		 <!-- SCRIPT CONTROL DE COOKIES -->
+		<script type="text/javascript">
+		function controlcookies() {
+         // si variable no existe se crea (al clicar en Aceptar)
+   		 localStorage.controlcookie = (localStorage.controlcookie || 0);
+ 
+    	localStorage.controlcookie++; // incrementamos cuenta de la cookie
+    	cookie1.style.display='none'; // Esconde la política de cookies
+		}
+		</script>
+		
+		
+        {% endblock %}
+    </body>
+</html>

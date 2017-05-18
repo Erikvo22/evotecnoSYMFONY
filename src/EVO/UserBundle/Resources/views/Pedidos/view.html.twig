@@ -1,0 +1,76 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Vista pedido{% endblock %}
+
+{% block body %}
+
+<meta charset="UTF-8" />
+
+	{{ parent() }}
+	<div class="container well">
+	    <div class="col-md-9">
+	    <h2>Pedido nº {{ ped.id }}</h2>
+	        <br>
+	        <dl>
+	        	
+	            
+	        	<dt>Producto</dt>
+	            <dd>
+	               {{ producto.nombre}}
+	                &nbsp;
+	            </dd>
+	            <br>
+	            
+	            
+	             <dd id = "viewpro">
+	                <img src = "{{ asset('img/productos/' ~  producto.img) }}">
+	                &nbsp;
+	            </dd>
+	            <br>
+	       
+	       		<dt>Cantidad</dt>
+	            <dd>
+	                {{ ped.cantidad}}
+	                &nbsp;
+	            </dd>
+	            <br>
+	        
+	            <dt>Descripción</dt>
+	            <dd>
+	                {{ ped.otros }}
+	                &nbsp;
+	            </dd>
+	            <br>
+	            	
+	             <dt>Proveedor</dt>
+	            <dd>{{ proveedor.empresa}}
+	              
+	                &nbsp;
+	            </dd>
+	            <br>
+
+	           
+	     
+	        </dl>
+	    </div>
+	    <div class="col-md-3">
+	    	<h3>Acciones</h3>
+			<p>
+		    	<a href="{{ path('evo_pedidos_edit', { id: ped.id }) }}" class="btn btn-primary btn-lg btn-block">
+		    		<span class="glyphicon glyphicon-edit"></span>
+		        	Editar Pedido
+				 </a>
+			</p>
+			<p>
+			    {{ include('EVOUserBundle:Pedidos:forms/form.html.twig', { form: delete_form, message: '¿Estás seguro?'}) }}
+			</p>
+	    </div>
+	</div>
+	
+	
+	<STYLE TYPE="text/css" MEDIA=screen>
+
+  .footer-distributed{ margin-top: 100px;  }
+ 
+</STYLE>
+{% endblock %}

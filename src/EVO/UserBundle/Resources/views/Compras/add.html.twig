@@ -1,0 +1,85 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Nueva Venta{% endblock %}
+
+{% block body %}
+<meta charset="UTF-8" />
+
+ <!--NOMBRE DE LA PÁGINA -->
+<div class = "nombre">
+<ul>
+   <li><span class ="fa fa-folder"></span>Nueva Venta</li>
+</ul>
+</div>  
+
+
+<!-- FORMULARIO -->
+
+{{ parent() }}
+<div class = "main container">
+<div class = "row well">
+<div class = "col-md-6">
+
+{{ form_start(form, {'attr' :  {'novalidate' : 'novalidate',  'grupo' : 'form'}} )}}
+
+
+<div class="form-group">
+<label>Productos</label>
+ {{ form_widget(form.productos, { 'attr' : {'class' : 'form-control'} }) }}
+  <span class="text-danger">{{ form_errors(form.productos) }}</span>
+ </div>
+
+
+<div class = "form-group">
+<label>Cliente</label>
+{{ form_widget(form.user, {'attr' : {'class' : 'form-control'} } )}}
+<span class = "text-danger">{{ form_errors(form.user) }}</span>
+</div>
+
+<div class = "form-group">
+<label>Cantidad</label>
+{{ form_widget(form.cantidad, {'attr' : {'class' : 'form-control'} } )}}
+<span class = "text-danger">{{ form_errors(form.cantidad) }}</span>
+</div>
+
+<div class = "form-group">
+<label>Precio und</label>
+{{ form_widget(form.preciototal, {'attr' : {'class' : 'form-control'} } )}}
+<span class = "text-danger">{{ form_errors(form.preciototal) }}</span>
+</div>
+
+
+<div class = "form-group">
+<label>Fecha de Venta</label>
+{{ form_widget(form.fechacomp, {'attr' : {'class' : 'form-control'} } )}}
+<span class = "text-danger">{{ form_errors(form.fechacomp) }}</span>
+</div>
+
+
+<div class = "form-group">
+<label>Dirección</label>
+{{ form_widget(form.direccion, {'attr' : {'class' : 'form-control'} } )}}
+<span class = "text-danger">{{ form_errors(form.direccion) }}</span>
+</div>
+
+
+
+
+<p>
+{{ form_widget(form.save, {'label': 'Registrar venta', 'attr': {'class' : 'btn btn-success'}}) }}
+</p>
+
+
+{{ form_end(form) }}
+</div>
+</div>
+</div>
+
+
+<STYLE TYPE="text/css" MEDIA=screen>
+
+  .footer-distributed{ margin-top: 100px;  }
+ 
+</STYLE>
+
+{% endblock %}
